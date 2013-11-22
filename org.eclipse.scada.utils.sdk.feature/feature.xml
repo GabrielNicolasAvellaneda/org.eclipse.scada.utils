@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<feature id="org.eclipse.scada.utils.sdk"
-	label="%featureName"
-	plugin="org.eclipse.scada.utils"
-	provider-name="%providerName" version="0.1.0.qualifier">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.scada.utils.sdk" label="%featureName" plugin="org.eclipse.scada.utils" provider-name="%providerName" version="0.1.0.v20131007-1502">
 
    <description>
       %description
