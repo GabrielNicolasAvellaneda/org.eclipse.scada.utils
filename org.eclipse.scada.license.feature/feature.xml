@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.scada.license" version="0.1.0.v20131009-1629">
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.scada.license"
+      version="0.1.0.qualifier">
 
    <description>
       %description
