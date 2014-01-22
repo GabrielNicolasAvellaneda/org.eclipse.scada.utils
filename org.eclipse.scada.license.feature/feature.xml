@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<feature
-      id="org.eclipse.scada.license"
-      label="Eclipse SCADA License Feature (Incubation)"
-      version="0.1.0.qualifier"
-      provider-name="Eclipse SCADA Project">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.scada.license" label="Eclipse SCADA License Feature (Incubation)" provider-name="Eclipse SCADA Project" version="0.1.0.v20140122-1129">
 
    <description>
       The Eclipse SCADA License Feature
