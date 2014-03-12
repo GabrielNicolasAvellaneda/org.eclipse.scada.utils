@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 TH4 SYSTEMS GmbH and others.
+ * Copyright (c) 2011, 2014 TH4 SYSTEMS GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,16 +7,18 @@
  *
  * Contributors:
  *     TH4 SYSTEMS GmbH - initial API and implementation
+ *     IBH SYSTEMS GmbH - allow the use of system property variables
  *******************************************************************************/
 package org.eclipse.scada.utils.osgi.autostart;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.eclipse.scada.utils.str.StringReplacer;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -100,27 +102,25 @@ public class Activator implements BundleActivator
 
     protected void loadStartLevels () throws IOException
     {
-        final String fileName = System.getProperty ( "org.eclipse.scada.utils.osgi.autostart.file", null );
+        String location = System.getProperty ( "org.eclipse.scada.utils.osgi.autostart.file", null ); //$NON-NLS-1$
+        location = StringReplacer.replace ( location, System.getProperties () );
 
-        log ( LogService.LOG_INFO, String.format ( "Loading start bundles from: %s", fileName ) );
+        log ( LogService.LOG_INFO, String.format ( "Loading start bundles from: %s", location ) ); //$NON-NLS-1$
 
         this.bundleStartList.clear ();
 
-        if ( fileName == null )
+        if ( location == null )
         {
             return;
         }
 
-        final File file = new File ( fileName );
+        final URL url = new URL ( location );
+
         final Properties p = new Properties ();
-        final FileReader reader = new FileReader ( file );
-        try
+
+        try ( InputStream input = url.openStream () )
         {
-            p.load ( reader );
-        }
-        finally
-        {
-            reader.close ();
+            p.load ( input );
         }
 
         for ( final String key : p.stringPropertyNames () )
