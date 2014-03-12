@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.scada.ui.utils" label="%featureName" license-feature="org.eclipse.scada.license" license-feature-version="0.1.0.qualifier" plugin="org.eclipse.scada.utils" provider-name="%providerName" version="0.1.0.v20140122-1129">
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.scada.ui.utils"
+      label="%featureName"
+      version="0.1.0.qualifier"
+      provider-name="%providerName"
+      plugin="org.eclipse.scada.utils"
+      license-feature="org.eclipse.scada.license"
+      license-feature-version="0.1.0.qualifier">
 
    <description>
       %description
@@ -16,23 +24,43 @@
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.slf4j.api"/>
-      <import match="greaterOrEqual" plugin="org.eclipse.ui" version="3.5.0"/>
-      <import match="greaterOrEqual" plugin="org.eclipse.core.runtime" version="3.5.0"/>
-      <import match="greaterOrEqual" plugin="org.eclipse.core.databinding" version="1.2.0"/>
-      <import match="greaterOrEqual" plugin="org.eclipse.ui.navigator" version="3.4.0"/>
-      <import match="greaterOrEqual" plugin="org.eclipse.jface.databinding" version="1.3.0"/>
+      <import plugin="org.eclipse.ui" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.databinding" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.navigator" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.databinding" version="1.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.databinding.property"/>
       <import plugin="org.eclipse.scada.utils"/>
-      <import match="greaterOrEqual" plugin="org.eclipse.ui" version="3.7.0"/>
-      <import match="greaterOrEqual" plugin="org.eclipse.core.runtime" version="3.7.0"/>
+      <import plugin="org.eclipse.ui" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
    </requires>
 
-   <plugin download-size="0" id="org.eclipse.scada.ui.blink" install-size="0" unpack="false" version="0.0.0"/>
+   <plugin
+         id="org.eclipse.scada.ui.blink"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin download-size="0" id="org.eclipse.scada.ui.databinding" install-size="0" unpack="false" version="0.0.0"/>
+   <plugin
+         id="org.eclipse.scada.ui.databinding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin download-size="0" id="org.eclipse.scada.ui.localization" install-size="0" unpack="false" version="0.0.0"/>
+   <plugin
+         id="org.eclipse.scada.ui.localization"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin download-size="0" id="org.eclipse.scada.ui.utils" install-size="0" unpack="false" version="0.0.0"/>
+   <plugin
+         id="org.eclipse.scada.ui.utils"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
