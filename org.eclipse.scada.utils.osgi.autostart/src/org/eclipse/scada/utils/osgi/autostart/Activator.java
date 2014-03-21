@@ -11,6 +11,7 @@
  *******************************************************************************/
 package org.eclipse.scada.utils.osgi.autostart;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -102,8 +103,16 @@ public class Activator implements BundleActivator
 
     protected void loadStartLevels () throws IOException
     {
-        String location = System.getProperty ( "org.eclipse.scada.utils.osgi.autostart.file", null ); //$NON-NLS-1$
+        String location = System.getProperty ( "org.eclipse.scada.utils.osgi.autostart.url", null ); //$NON-NLS-1$
         location = StringReplacer.replace ( location, System.getProperties () );
+
+        String fileLocation = System.getProperty ( "org.eclipse.scada.utils.osgi.autostart.file", null ); //$NON-NLS-1$
+        if ( fileLocation != null )
+        {
+            // override with file location
+            fileLocation = StringReplacer.replace ( fileLocation, System.getProperties () );
+            location = new File ( fileLocation ).toURI ().toURL ().toString ();
+        }
 
         log ( LogService.LOG_INFO, String.format ( "Loading start bundles from: %s", location ) ); //$NON-NLS-1$
 
