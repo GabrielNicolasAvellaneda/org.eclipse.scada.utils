@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Eclipse SCADA UI Blinking (Incubation)
-Bundle-SymbolicName: org.eclipse.scada.ui.blink
-Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.eclipse.scada.ui.blink.Activator
-Bundle-Vendor: Eclipse SCADA Project
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime
 Export-Package: org.eclipse.scada.ui.blink;version="0.1.0"
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.slf4j;version="1.6.0"
+Bundle-Vendor: Eclipse SCADA Project
 Bundle-ActivationPolicy: lazy
+Bundle-Version: 0.1.0.v20140407-1215
+Bundle-Name: Eclipse SCADA UI Blinking (Incubation)
+Bundle-Activator: org.eclipse.scada.ui.blink.Activator
+Bundle-ManifestVersion: 2
+Import-Package: org.slf4j;version="1.6.0"
+Bundle-SymbolicName: org.eclipse.scada.ui.blink
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
