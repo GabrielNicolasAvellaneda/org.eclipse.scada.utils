@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.eclipse.scada.utils</groupId>
     <artifactId>org.eclipse.scada.utils-parent</artifactId>
-    <version>0.1.0.RC2</version>
+    <version>0.1.0</version>
     <relativePath>../org.eclipse.scada.utils-parent</relativePath>
   </parent>
   <groupId>org.eclipse.scada.utils</groupId>
   <artifactId>org.eclipse.scada.utils.p2-incubation</artifactId>
-  <version>0.1.0.RC2</version>
+  <version>0.1.0</version>
   <packaging>eclipse-repository</packaging>
   <profiles>
     <profile>

@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Export-Package: org.eclipse.scada.utils.stats;version="0.1.0"
 Bundle-Vendor: Eclipse SCADA Project
-Bundle-Version: 0.1.0.v20140430-1526
+Bundle-Version: 0.1.0.v20140430-1536
 Bundle-Name: Eclipse SCADA Statistic Information (Incubation)
 Bundle-ManifestVersion: 2
-Import-Package: org.eclipse.scada.utils.lang;version="0.1.0"
 Bundle-SymbolicName: org.eclipse.scada.utils.stats
+Import-Package: org.eclipse.scada.utils.lang;version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 
