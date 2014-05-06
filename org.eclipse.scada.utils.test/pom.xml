@@ -10,7 +10,7 @@
   </parent>
   <groupId>org.eclipse.scada.utils</groupId>
   <artifactId>org.eclipse.scada.utils.test</artifactId>
-  <version>0.1.0.v20140506-1029</version>
+  <version>0.1.0.v20140506-1600</version>
   <packaging>eclipse-test-plugin</packaging>
   <build>
     <plugins>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><site>
-   <feature id="org.eclipse.scada.utils" url="features/org.eclipse.scada.utils_0.1.0.v20140506-1029.jar" version="0.1.0.v20140506-1029">
+   <feature id="org.eclipse.scada.utils" url="features/org.eclipse.scada.utils_0.1.0.v20140506-1600.jar" version="0.1.0.v20140506-1600">
       <category name="org.eclipse.scada.utils.category"/>
    </feature>
-   <feature id="org.eclipse.scada.utils.sdk" url="features/org.eclipse.scada.utils.sdk_0.1.0.v20140506-1029.jar" version="0.1.0.v20140506-1029">
+   <feature id="org.eclipse.scada.utils.sdk" url="features/org.eclipse.scada.utils.sdk_0.1.0.v20140506-1600.jar" version="0.1.0.v20140506-1600">
       <category name="org.eclipse.scada.utils.sdk.category"/>
    </feature>
-   <feature id="org.eclipse.scada.ui.utils" url="features/org.eclipse.scada.ui.utils_0.1.0.v20140506-1029.jar" version="0.1.0.v20140506-1029">
+   <feature id="org.eclipse.scada.ui.utils" url="features/org.eclipse.scada.ui.utils_0.1.0.v20140506-1600.jar" version="0.1.0.v20140506-1600">
       <category name="org.eclipse.scada.utils.category"/>
    </feature>
    <category-def label="Eclipse SCADA Utils (Incubation)" name="org.eclipse.scada.utils.category">
