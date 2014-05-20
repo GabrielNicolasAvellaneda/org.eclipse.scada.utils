@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-Vendor: Eclipse SCADA Project
-Bundle-Version: 0.1.0.v20140506-1600
+Bundle-Version: 0.1.0.v20140506-1700
 Bundle-Name: Daemon Launcher Bundle (Incubation)
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.eclipse.scada.utils.osgi.daemon
 Import-Package: org.eclipse.core.runtime.adaptor;resolution:=optional,
  org.osgi.framework;version="1.7.0",org.osgi.framework.launch;version=
  "1.1.0",org.osgi.framework.startlevel;version="1.0.0"
+Bundle-SymbolicName: org.eclipse.scada.utils.osgi.daemon
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

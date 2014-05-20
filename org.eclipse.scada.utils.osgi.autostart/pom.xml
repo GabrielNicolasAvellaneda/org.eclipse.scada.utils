@@ -10,6 +10,6 @@
   </parent>
   <groupId>org.eclipse.scada.utils</groupId>
   <artifactId>org.eclipse.scada.utils.osgi.autostart</artifactId>
-  <version>0.1.0.v20140506-1600</version>
+  <version>0.1.0.v20140506-1700</version>
   <packaging>eclipse-plugin</packaging>
 </project>

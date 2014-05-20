@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Require-Bundle: org.junit;bundle-version="4.8.0"
 Bundle-Vendor: Eclipse SCADA Project
 Fragment-Host: org.eclipse.scada.utils;bundle-version="0.1.0"
-Bundle-Version: 0.1.0.v20140506-1600
+Bundle-Version: 0.1.0.v20140506-1700
 Bundle-Name: Eclipse SCADA Utils Testing (Incubation)
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.eclipse.scada.utils.test
 Import-Package: javax.script
+Bundle-SymbolicName: org.eclipse.scada.utils.test
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 
