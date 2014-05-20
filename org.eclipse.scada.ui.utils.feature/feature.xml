@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.scada.ui.utils" label="%featureName" license-feature="org.eclipse.scada.license" license-feature-version="0.1.0.qualifier" plugin="org.eclipse.scada.utils" provider-name="%providerName" version="0.1.0.v20140506-1700">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.eclipse.scada.ui.utils" label="%featureName" license-feature="org.eclipse.scada.license" license-feature-version="0.1.0.qualifier" plugin="org.eclipse.scada.utils" provider-name="%providerName" version="0.1.0.v20140520-1210">
 
    <description>
       %description
