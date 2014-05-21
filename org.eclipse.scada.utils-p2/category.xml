@@ -27,7 +27,7 @@
    </category-def>
    <category-def name="org.eclipse.scada.utils.ui.server.category" label="Eclipse SCADA Server User Interface (Incubuation)">
       <description>
-         Modules to create a server side user interface using web technologies.
+         Modules to create a server side user interface.
       </description>
    </category-def>
    <category-def name="org.eclipse.scada.utils.ui.server.sdk.category" label="Eclipse SCADA Server User Interface SDK (Incubuation)">
