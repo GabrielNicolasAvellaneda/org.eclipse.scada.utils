@@ -8,7 +8,7 @@
  * Contributors:
  *     TH4 SYSTEMS GmbH - initial API and implementation
  *     Jens Reimann - further development
- *     IBH SYSTEMS GmbH - cleanups for bug 433409
+ *     IBH SYSTEMS GmbH - cleanups for bug 433409, limit interface for Java 8
  *******************************************************************************/
 package org.eclipse.scada.utils.script;
 
@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 import javax.script.Compilable;
 import javax.script.CompiledScript;
@@ -27,7 +28,7 @@ import javax.script.ScriptException;
 
 /**
  * A wrapper to execute scripts
- * 
+ *
  * @author Jens Reimann
  */
 public class ScriptExecutor
@@ -46,41 +47,83 @@ public class ScriptExecutor
 
     private final String sourceName;
 
-    private static ScriptEngine createEngine ( final ScriptEngineManager engineManager, final String engineName ) throws ScriptException
+    public ScriptExecutor ( final String engineName, final String command, final ClassLoader classLoader ) throws Exception
     {
-        if ( engineManager == null )
-        {
-            throw new IllegalArgumentException ( "Script engine manager must not be null" );
-        }
-
-        if ( engineName == null )
-        {
-            return null;
-        }
-
-        final ScriptEngine engine = engineManager.getEngineByName ( engineName );
-
-        if ( engine == null )
-        {
-            throw new ScriptException ( String.format ( "Script engine '%s' could not be found", engineName ) );
-        }
-
-        return engine;
+        this ( engineName, command, classLoader, null );
     }
 
-    public ScriptExecutor ( final ScriptEngineManager engineManager, final String engineName, final String command, final ClassLoader classLoader ) throws ScriptException
+    public ScriptExecutor ( final String engineName, final String command, final ClassLoader classLoader, final String sourceName ) throws Exception
     {
-        this ( createEngine ( engineManager, engineName ), engineName == null ? null : command, classLoader );
+        this ( Scripts.createManager ( classLoader ), engineName, command, classLoader, sourceName );
     }
 
-    public ScriptExecutor ( final ScriptEngineManager engineManager, final String engineName, final URL commandUrl, final ClassLoader classLoader ) throws ScriptException, IOException
+    public ScriptExecutor ( final String engineName, final URL commandUrl, final ClassLoader classLoader ) throws Exception
     {
-        this ( createEngine ( engineManager, engineName ), engineName == null ? null : commandUrl, classLoader );
+        this ( Scripts.createManager ( classLoader ), engineName, commandUrl, classLoader );
+    }
+
+    /**
+     * Create a new script executor
+     *
+     * @param engineManager
+     *            the engine manager to use
+     * @param engineName
+     *            the name of the script engine
+     * @param command
+     *            the script
+     * @param classLoader
+     *            the class loader the script should use
+     * @throws Exception
+     *             if anything goes wrong
+     */
+    public ScriptExecutor ( final ScriptEngineManager engineManager, final String engineName, final String command, final ClassLoader classLoader ) throws Exception
+    {
+        this ( Scripts.createEngine ( engineManager, engineName, classLoader ), engineName == null ? null : command, classLoader );
+    }
+
+    /**
+     * Create a new script executor
+     *
+     * @param engineManager
+     *            the engine manager to use
+     * @param engineName
+     *            the name of the script engine
+     * @param command
+     *            the script
+     * @param classLoader
+     *            the class loader the script should use
+     * @param sourceName
+     *            the name of the source
+     * @throws Exception
+     *             if anything goes wrong
+     */
+    public ScriptExecutor ( final ScriptEngineManager engineManager, final String engineName, final String command, final ClassLoader classLoader, final String sourceName ) throws Exception
+    {
+        this ( Scripts.createEngine ( engineManager, engineName, classLoader ), engineName == null ? null : command, classLoader, sourceName );
+    }
+
+    /**
+     * Create a new script executor
+     *
+     * @param engineManager
+     *            the engine manager to use
+     * @param engineName
+     *            the name of the script engine
+     * @param commandUrl
+     *            the URL to the script
+     * @param classLoader
+     *            the class loader the script should use
+     * @throws Exception
+     *             if anything goes wrong
+     */
+    public ScriptExecutor ( final ScriptEngineManager engineManager, final String engineName, final URL commandUrl, final ClassLoader classLoader ) throws Exception
+    {
+        this ( Scripts.createEngine ( engineManager, engineName, classLoader ), engineName == null ? null : commandUrl, classLoader );
     }
 
     /**
      * Construct a new script executors
-     * 
+     *
      * @param engine
      *            the script engine to use, must not be <code>null</code>
      * @param command
@@ -90,7 +133,7 @@ public class ScriptExecutor
      *            <code>null</code>
      * @throws ScriptException
      */
-    public ScriptExecutor ( final ScriptEngine engine, final String command, final ClassLoader classLoader, final String sourceName ) throws ScriptException
+    public ScriptExecutor ( final ScriptEngine engine, final String command, final ClassLoader classLoader, final String sourceName ) throws Exception
     {
         this.engine = engine;
         this.command = command;
@@ -100,26 +143,25 @@ public class ScriptExecutor
 
         if ( command != null && engine instanceof Compilable && !Boolean.getBoolean ( PROP_NAME_DISABLE_COMPILE ) )
         {
-            engine.put ( ScriptEngine.FILENAME, sourceName );
-            final ClassLoader currentClassLoader = Thread.currentThread ().getContextClassLoader ();
-            try
+            if ( sourceName != null )
             {
-                if ( classLoader != null )
+                engine.put ( ScriptEngine.FILENAME, sourceName );
+            }
+
+            Scripts.executeWithClassLoader ( classLoader, new Callable<Void> () {
+                @Override
+                public Void call () throws Exception
                 {
-                    Thread.currentThread ().setContextClassLoader ( classLoader );
+                    ScriptExecutor.this.compiledScript = ( (Compilable)engine ).compile ( command );
+                    return null;
                 }
-                this.compiledScript = ( (Compilable)engine ).compile ( command );
-            }
-            finally
-            {
-                Thread.currentThread ().setContextClassLoader ( currentClassLoader );
-            }
+            } );
         }
     }
 
     /**
      * Construct a new script executors
-     * 
+     *
      * @param engine
      *            the script engine to use, must not be <code>null</code>
      * @param command
@@ -129,12 +171,12 @@ public class ScriptExecutor
      *            <code>null</code>
      * @throws ScriptException
      */
-    public ScriptExecutor ( final ScriptEngine engine, final String command, final ClassLoader classLoader ) throws ScriptException
+    public ScriptExecutor ( final ScriptEngine engine, final String command, final ClassLoader classLoader ) throws Exception
     {
         this ( engine, command, classLoader, null );
     }
 
-    public ScriptExecutor ( final ScriptEngine engine, final URL commandUrl, final ClassLoader classLoader ) throws ScriptException, IOException
+    public ScriptExecutor ( final ScriptEngine engine, final URL commandUrl, final ClassLoader classLoader ) throws Exception
     {
         this.engine = engine;
         this.command = null;
@@ -144,19 +186,15 @@ public class ScriptExecutor
 
         if ( commandUrl != null && engine instanceof Compilable && !Boolean.getBoolean ( PROP_NAME_DISABLE_COMPILE ) )
         {
-            final ClassLoader currentClassLoader = Thread.currentThread ().getContextClassLoader ();
-            try
-            {
-                if ( classLoader != null )
+            Scripts.executeWithClassLoader ( classLoader, new Callable<Void> () {
+
+                @Override
+                public Void call () throws Exception
                 {
-                    Thread.currentThread ().setContextClassLoader ( classLoader );
+                    ScriptExecutor.this.compiledScript = ( (Compilable)engine ).compile ( new InputStreamReader ( commandUrl.openStream () ) );
+                    return null;
                 }
-                this.compiledScript = ( (Compilable)engine ).compile ( new InputStreamReader ( commandUrl.openStream () ) );
-            }
-            finally
-            {
-                Thread.currentThread ().setContextClassLoader ( currentClassLoader );
-            }
+            } );
         }
     }
 
@@ -208,7 +246,10 @@ public class ScriptExecutor
         Map<String, Object> vars = null;
         try
         {
-            this.engine.put ( ScriptEngine.FILENAME, this.sourceName );
+            if ( this.sourceName != null )
+            {
+                this.engine.put ( ScriptEngine.FILENAME, this.sourceName );
+            }
 
             vars = applyVars ( scriptContext, scriptObjects );
 
@@ -235,26 +276,21 @@ public class ScriptExecutor
         }
     }
 
-    public Object execute ( final ScriptContext scriptContext ) throws ScriptException, IOException
+    public Object execute ( final ScriptContext scriptContext ) throws Exception
     {
         return execute ( scriptContext, null );
     }
 
-    public Object execute ( final ScriptContext scriptContext, final Map<String, Object> scriptObjects ) throws ScriptException, IOException
+    public Object execute ( final ScriptContext scriptContext, final Map<String, Object> scriptObjects ) throws Exception
     {
-        final ClassLoader currentClassLoader = Thread.currentThread ().getContextClassLoader ();
-        try
-        {
-            if ( this.classLoader != null )
+        return Scripts.executeWithClassLoader ( this.classLoader, new Callable<Object> () {
+
+            @Override
+            public Object call () throws Exception
             {
-                Thread.currentThread ().setContextClassLoader ( this.classLoader );
+                return executeScript ( scriptContext, scriptObjects );
             }
-            return executeScript ( scriptContext, scriptObjects );
-        }
-        finally
-        {
-            Thread.currentThread ().setContextClassLoader ( currentClassLoader );
-        }
+        } );
     }
 
     @Override

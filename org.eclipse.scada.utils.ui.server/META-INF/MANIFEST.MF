@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.eclipse.scada.utils.ui.server
 Bundle-Version: 0.2.0.qualifier
 Bundle-Vendor: Eclipse SCADA Project
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Service-Component: OSGI-INF/appCfg.xml,
- OSGI-INF/mainPage.xml
+Service-Component: OSGI-INF/appCfg.xml
 Import-Package: org.eclipse.core.databinding,
  org.eclipse.core.databinding.beans,
  org.eclipse.core.databinding.observable,
@@ -21,7 +20,11 @@ Import-Package: org.eclipse.core.databinding,
  org.eclipse.core.databinding.property.set,
  org.eclipse.core.databinding.property.value,
  org.eclipse.core.databinding.util,
+ org.eclipse.core.runtime;version="3.4.0",
+ org.eclipse.scada.ui.utils.status;version="0.1.0",
  org.eclipse.scada.utils.beans;version="0.1.0",
+ org.eclipse.scada.utils.concurrent;version="0.1.0",
+ org.eclipse.scada.utils.osgi;version="0.1.0",
  org.osgi.framework;version="1.7.0",
  org.osgi.util.tracker;version="1.5.1",
  org.slf4j;version="1.7.2"
@@ -30,3 +33,4 @@ Require-Bundle: org.eclipse.rap.jface;bundle-version="2.2.0",
  org.eclipse.rap.rwt;bundle-version="2.2.0",
  org.eclipse.rap.rwt.osgi;bundle-version="2.2.0"
 Export-Package: org.eclipse.scada.utils.ui.server;version="0.2.0";uses:="org.eclipse.swt.widgets"
+Bundle-Activator: org.eclipse.scada.utils.ui.server.internal.Activator

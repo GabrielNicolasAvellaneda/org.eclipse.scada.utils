@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 IBH SYSTEMS GmbH Corporation and others.
+ * Copyright (c) 2014 IBH SYSTEMS GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,7 @@ public class PageManager
     {
         this.realm = realm;
         this.context = context;
-        this.rootNode = new TreeNode ( realm, "" );
+        this.rootNode = new TreeNode ( realm, "" ); //$NON-NLS-1$
 
         this.pageName = new WritableValue ( realm );
 
@@ -222,7 +222,7 @@ public class PageManager
 
     private void performAddProvider ( final PageProvider provider )
     {
-        logger.debug ( "Adding provider: {}", provider );
+        logger.debug ( "Adding provider: {}", provider ); //$NON-NLS-1$
 
         final TreeNode node = this.rootNode.addEntry ( provider.getName (), getPath ( provider ), provider );
         if ( this.currentNode == null && node != null )

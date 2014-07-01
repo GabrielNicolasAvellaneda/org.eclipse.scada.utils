@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 TH4 SYSTEMS GmbH and others.
+ * Copyright (c) 2011, 2014 TH4 SYSTEMS GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *     TH4 SYSTEMS GmbH - initial API and implementation
+ *     IBH SYSTEMS GmbH - move to org.eclipse.scada.ui.utils
  *******************************************************************************/
 package org.eclipse.scada.ui.databinding;
 
@@ -16,7 +17,12 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.scada.utils.core.runtime.AdapterHelper;
 
+/**
+ * @deprecated Use {@link org.eclipse.scada.ui.utils.SelectionHelper} instead.
+ */
+@Deprecated
 public class SelectionHelper
 {
 

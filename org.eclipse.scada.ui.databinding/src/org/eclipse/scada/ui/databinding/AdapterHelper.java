@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2013 TH4 SYSTEMS GmbH and others.
+ * Copyright (c) 2009, 2014 TH4 SYSTEMS GmbH and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,8 @@
  *
  * Contributors:
  *     TH4 SYSTEMS GmbH - initial API and implementation
+ *     IBH SYSTEMS GmbH - deprecated and moved to
+ *          org.eclipse.scada.utils.core.runtime
  *******************************************************************************/
 package org.eclipse.scada.ui.databinding;
 
@@ -14,6 +16,11 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IAdapterManager;
 import org.eclipse.core.runtime.Platform;
 
+/**
+ * @deprecated use {@link org.eclipse.scada.utils.core.runtime.AdapterHelper}
+ *             instead.
+ */
+@Deprecated
 public class AdapterHelper
 {
     /**
