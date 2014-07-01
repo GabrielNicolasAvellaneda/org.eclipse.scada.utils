@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Export-Package: org.eclipse.scada.utils.osgi.jdbc.pool;version="0.1.0"
  ;uses:="org.eclipse.scada.utils.osgi.jdbc,org.osgi.service.jdbc"
 Bundle-Vendor: Eclipse SCADA Project
-Bundle-Version: 0.1.0.v20140520-1210
+Bundle-Version: 0.1.0.v20140520-1338
 Bundle-Name: Eclipse SCADA Connection Pool (Incubation)
 Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.scada.utils.osgi.jdbc.pool
 Import-Package: javax.sql,org.apache.commons.dbcp;version="1.4.0",org.
  apache.commons.dbcp.datasources;version="1.4.0",org.apache.commons.po
  ol;version="1.6.0",org.apache.commons.pool.impl;version="1.6.0",org.e
  clipse.scada.utils.osgi.jdbc;version="0.1.0",org.osgi.service.jdbc;ve
  rsion="1.0.0",org.slf4j;version="1.5.0"
-Bundle-SymbolicName: org.eclipse.scada.utils.osgi.jdbc.pool
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
