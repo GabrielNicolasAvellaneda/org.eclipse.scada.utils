@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>org.eclipse.scada.releng</groupId>
 		<artifactId>superParent</artifactId>
-		<version>0.2.0.M3</version>
+		<version>0.2.0.M5</version>
 	</parent>
 
 	<groupId>org.eclipse.scada.utils</groupId>
 	<artifactId>org.eclipse.scada.utils-parent</artifactId>
-	<version>0.2.0.M3</version>
+	<version>0.2.0.M5</version>
 	<packaging>pom</packaging>
 
 	<properties>
